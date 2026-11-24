@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CFA CONVERTER</title>
+<meta name="description" content="Convertisseur de devises : yuan chinois en franc CFA et toutes les devises du monde.">
+<meta name="theme-color" content="#0b1f3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#eef2f7;--card:#fff;--ink:#0b1f3a;--mute:#5b6b82;--line:#d9e1ec;--navy:#0b1f3a;--green:#16a34a;--greenbg:#e7f6ec;--warn:#fff4d6;--warnink:#7a5200;--err:#fde8e8;--errink:#9b1c1c}
+:root[data-theme=dark]{--bg:#071326;--card:#0f2542;--ink:#eaf1fb;--mute:#93a5bf;--line:#1e3a5f;--navy:#0f2542;--green:#34d27b;--greenbg:#0f3a2c;--warn:#3a2f10;--warnink:#f5d98a;--err:#3d1620;--errink:#ffb4b4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom)}header{background:#0b1f3a;color:#fff;padding:calc(14px + env(safe-area-inset-top)) 18px 70px}.bar{max-width:640px;margin:auto;display:flex;align-items:center;justify-content:space-between}h1{font-size:1.15rem;margin:0;letter-spacing:.02em}h1 span{color:#34d27b}button{font:inherit;color:inherit;cursor:pointer}.ico{background:rgba(255,255,255,.12);border:0;color:#fff;border-radius:10px;width:40px;height:40px;font-size:1.1rem}main{max-width:640px;margin:-52px auto 0;padding:0 14px 28px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(11,31,58,.12)}.row{display:flex;gap:10px;align-items:center}label.l{font-size:.85rem;color:var(--mute)}.amt{width:100%;border:0;background:transparent;color:var(--ink);font:700 2.4rem/1.1 inherit;padding:6px 0;outline:0;min-width:0}.cur{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 12px;min-width:150px;justify-content:space-between;max-width:48%}.cur b{font-size:1.05rem}.cur small{display:block;color:var(--mute);font-size:.72rem;max-width:110px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sep{display:flex;align-items:center;gap:10px;margin:14px 0;color:var(--mute)}.sep:before,.sep:after{content:"";flex:1;height:1px;background:var(--line)}.swap{width:46px;height:46px;border-radius:50%;border:0;background:var(--green);color:#fff;font-size:1.3rem}.swap:active{transform:rotate(180deg)}.res{background:var(--greenbg);border-radius:14px;padding:14px 16px;margin-top:6px}.res .v{font:700 2.1rem/1.15 inherit;color:var(--green);word-break:break-all}.res .v small{font-size:1rem;color:var(--ink)}.meta{font-size:.85rem;color:var(--mute);margin-top:10px;display:grid;gap:2px}.copy{margin-top:10px;border:0;background:var(--navy);color:#fff;border-radius:10px;padding:9px 14px;font-weight:600}:root[data-theme=dark] .copy{background:var(--green);color:#052e16}.note{border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:.9rem}.note.w{background:var(--warn);color:var(--warnink)}.note.e{background:var(--err);color:var(--errink)}.note button{margin-left:8px;border:1px solid currentColor;background:none;border-radius:8px;padding:2px 10px}h2{font-size:1rem;margin:22px 4px 8px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip,.h{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:.9rem}.h{display:block;width:100%;border-radius:12px;text-align:left;margin-bottom:6px}.empty{color:var(--mute);font-size:.9rem;margin:4px}.foot{font-size:.78rem;color:var(--mute);text-align:center;margin:22px 8px 0}dialog{border:0;border-radius:18px;padding:0;width:min(560px,94vw);max-height:84vh;background:var(--card);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.4)}dialog::backdrop{background:rgba(7,19,38,.6)}.dh{display:flex;gap:8px;padding:14px;border-bottom:1px solid var(--line)}.dh input{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit;min-width:0}.dh button{border:0;background:none;font-size:1.3rem}.list{overflow:auto;max-height:64vh;padding:6px}.it{display:flex;align-items:center;gap:8px;padding:10px;border-radius:10px}.it:hover{background:var(--bg)}.it .t{flex:1;cursor:pointer;min-width:0}.it .t small{display:block;color:var(--mute)}.it .s{border:0;background:none;font-size:1.3rem;color:var(--mute)}.it .s.on{color:#f5b301}.sel{outline:2px solid var(--green)}:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+</style>
+</head>
+<body>
+<header><div class="bar"><h1>CFA <span>CONVERTER</span></h1><button class="ico" id="theme" aria-label="Changer le thème">◐</button></div></header>
+<main>
+ <div id="banner"></div>
+ <section class="card">
+  <label class="l" for="amt">Montant</label>
+  <div class="row"><input id="amt" class="amt" inputmode="decimal" autocomplete="off" value="100"><button class="cur" id="fromBtn" aria-label="Choisir la devise de départ"></button></div>
+  <div class="sep"><button class="swap" id="swap" aria-label="Inverser les devises">⇅</button></div>
+  <div class="row"><div style="flex:1"><label class="l">Équivalent</label></div><button class="cur" id="toBtn" aria-label="Choisir la devise d'arrivée"></button></div>
+  <div class="res"><div class="v" id="out">—</div></div>
+  <div class="meta"><span id="rate"></span><span id="upd"></span></div>
+  <button class="copy" id="copy">Copier le résultat</button>
+ </section>
+ <h2>Favoris</h2><div class="chips" id="favs"></div>
+ <h2>Dernières conversions</h2><div id="hist"></div>
+ <p class="foot">Taux indicatifs : ils peuvent différer de ceux appliqués par les banques et les services de transfert d'argent. Source : ExchangeRate-API.</p>
+</main>
+<dialog id="dlg"><div class="dh"><input id="q" type="search" placeholder="Rechercher une devise (nom ou code)" autocomplete="off"><button id="close" aria-label="Fermer">✕</button></div><div class="list" id="list"></div></dialog>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id),API='https://open.er-api.com/v6/latest/USD';
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+const S={from:'CNY',to:'XOF',amt:'100',rates:null,ts:null,stale:false,fav:LS.get('cfa_fav',['CNY','XOF','USD','EUR']),hist:LS.get('cfa_hist',[]),pick:null};
+const dn=(()=>{try{return new Intl.DisplayNames(['fr'],{type:'currency'})}catch{return null}})();
+const name=c=>{try{return dn?dn.of(c):c}catch{return c}},norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const fmt=(n,max)=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:max??(Math.abs(n)<1?6:2)}).format(n),parse=s=>parseFloat(String(s).replace(/\s/g,'').replace(',','.'));
+const rate=()=>S.rates&&S.rates[S.from]&&S.rates[S.to]?S.rates[S.to]/S.rates[S.from]:null;
+function render(){
+ $('fromBtn').innerHTML='<span><b>'+S.from+'</b><small></small></span><span>▾</span>';$('toBtn').innerHTML='<span><b>'+S.to+'</b><small></small></span><span>▾</span>';$('fromBtn').querySelector('small').textContent=name(S.from);$('toBtn').querySelector('small').textContent=name(S.to);
+ const r=rate(),a=parse(S.amt);if(r==null){$('out').textContent=S.rates?'Taux indisponible':'—';$('rate').textContent=''}else{$('out').textContent=isNaN(a)?'—':fmt(a*r)+' '+S.to;$('rate').textContent='1 '+S.from+' = '+fmt(r,6)+' '+S.to}
+ $('upd').textContent=S.ts?'Taux mis à jour le '+new Date(S.ts).toLocaleString('fr-FR',{dateStyle:'long',timeStyle:'short'}):'';
+ const f=$('favs');f.textContent='';if(!S.fav.length)f.innerHTML='<p class="empty">Touchez ☆ dans la liste des devises pour ajouter un favori.</p>';S.fav.forEach(c=>{const b=document.createElement('button');b.className='chip'+(c===S.to?' sel':'');b.textContent=c;b.title=name(c);b.onclick=()=>{if(c!==S.from){S.to=c;render()}};f.appendChild(b)});
+ const h=$('hist');h.textContent='';if(!S.hist.length)h.innerHTML='<p class="empty">Vos conversions apparaîtront ici.</p>';S.hist.forEach(x=>{const b=document.createElement('button');b.className='h';b.textContent=fmt(x.a)+' '+x.f+' → '+fmt(x.r)+' '+x.t;b.onclick=()=>{S.from=x.f;S.to=x.t;S.amt=String(x.a);$('amt').value=S.amt;render()};h.appendChild(b)});
+}
+function banner(kind,msg,retry){const b=$('banner');b.textContent='';if(!msg)return;const d=document.createElement('div');d.className='note '+kind;d.textContent=msg;if(retry){const r=document.createElement('button');r.textContent='Réessayer';r.onclick=load;d.appendChild(r)}b.appendChild(d)}
+async function load(){try{const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),10000);const res=await fetch(API,{signal:ctl.signal});clearTimeout(t);if(!res.ok)throw new Error('HTTP '+res.status);const d=await res.json();if(d.result!=='success'||!d.rates)throw new Error('Réponse invalide');S.rates=d.rates;S.ts=Date.now();S.stale=false;LS.set('cfa_rates',{rates:d.rates,ts:S.ts});banner('',null)}catch(e){if(S.rates){S.stale=true;banner('w','Hors ligne ou service indisponible : dernier taux enregistré, qui n\'est plus actualisé.',true)}else banner('e','Impossible de récupérer les taux de change. Vérifiez votre connexion Internet.',true)}render()}
+let ht;function saveHist(){const a=parse(S.amt),r=rate();if(isNaN(a)||a<=0||r==null)return;const e={f:S.from,t:S.to,a,r:a*r},p=S.hist[0];if(p&&p.f===e.f&&p.t===e.t&&p.a===e.a)return;S.hist=[e,...S.hist].slice(0,10);LS.set('cfa_hist',S.hist);render()}
+$('amt').addEventListener('input',e=>{let v=e.target.value.replace(/[^\d.,]/g,'');const i=v.search(/[.,]/);if(i>=0)v=v.slice(0,i+1)+v.slice(i+1).replace(/[.,]/g,'');e.target.value=v;S.amt=v;render();clearTimeout(ht);ht=setTimeout(saveHist,1500)});$('swap').onclick=()=>{[S.from,S.to]=[S.to,S.from];render();saveHist()};
+$('copy').onclick=async()=>{const t=$('out').textContent;if(t==='—')return;try{await navigator.clipboard.writeText(t)}catch{const x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()}const b=$('copy');b.textContent='Copié ✓';setTimeout(()=>b.textContent='Copier le résultat',1500);saveHist()};
+function list(){const q=norm($('q').value.trim()),box=$('list');box.textContent='';let codes=Object.keys(S.rates||{}).sort();if(!codes.length){box.innerHTML='<p class="empty">Liste indisponible sans connexion lors de la première utilisation.</p>';return}codes=codes.filter(c=>!q||norm(c).includes(q)||norm(name(c)).includes(q));codes.sort((a,b)=>(S.fav.includes(b)-S.fav.includes(a))||a.localeCompare(b));if(!codes.length)box.innerHTML='<p class="empty">Aucune devise trouvée.</p>';codes.forEach(c=>{const d=document.createElement('div');d.className='it';const t=document.createElement('div');t.className='t';t.innerHTML='<b></b><small></small>';t.firstChild.textContent=c;t.lastChild.textContent=name(c);t.onclick=()=>{S[S.pick]=c;$('dlg').close();render();saveHist()};const s=document.createElement('button'),on=S.fav.includes(c);s.className='s'+(on?' on':'');s.textContent=on?'★':'☆';s.setAttribute('aria-label','Favori '+c);s.onclick=()=>{S.fav=on?S.fav.filter(x=>x!==c):[...S.fav,c];LS.set('cfa_fav',S.fav);list();render()};d.append(t,s);box.appendChild(d)})}
+const open=w=>{S.pick=w;$('q').value='';list();$('dlg').showModal()};$('fromBtn').onclick=()=>open('from');$('toBtn').onclick=()=>open('to');$('q').oninput=list;$('close').onclick=()=>$('dlg').close();$('dlg').addEventListener('click',e=>{if(e.target===$('dlg'))$('dlg').close()});
+const root=document.documentElement;root.dataset.theme=LS.get('cfa_theme',matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');$('theme').onclick=()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;LS.set('cfa_theme',n)};
+const c=LS.get('cfa_rates',null);if(c){S.rates=c.rates;S.ts=c.ts}render();load();setInterval(load,30*60*1000);addEventListener('online',load);if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
